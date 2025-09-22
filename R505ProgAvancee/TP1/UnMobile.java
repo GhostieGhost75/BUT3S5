@@ -14,15 +14,20 @@ class UnMobile extends JPanel implements Runnable
 	setSize(telleLargeur, telleHauteur);
     }
 
-    public void run()
-    {
-	for (sonDebDessin=0; sonDebDessin < saLargeur - sonPas; sonDebDessin+= sonPas)
-	    {
-		repaint();
-		try{Thread.sleep(sonTemps);}
-		catch (InterruptedException telleExcp)
-		    {telleExcp.printStackTrace();}
-	    }
+    public void run() {
+        for (sonDebDessin=0; sonDebDessin < saLargeur - sonPas; sonDebDessin+= sonPas) {
+            repaint();
+            try{Thread.sleep(sonTemps);}
+            catch (InterruptedException telleExcp)
+            {telleExcp.printStackTrace();}
+        }
+        while (sonDebDessin != 0) {
+            sonDebDessin-= sonPas;
+            repaint();
+            try{Thread.sleep(sonTemps);}
+            catch (InterruptedException telleExcp)
+            {telleExcp.printStackTrace();}
+        }
     }
 
     public void paintComponent(Graphics telCG)
