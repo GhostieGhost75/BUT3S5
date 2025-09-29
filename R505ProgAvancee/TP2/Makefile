@@ -7,9 +7,9 @@ JVM=java
 .java.class:
 	$(JC) $(JFLAGS) $*.java
 
-CLASSES=exo2.Main.java exo2.Affichage.java
+CLASSES=exo2.Main2.java exo2.Affichage.java
 
-MAIN=exo2.Main
+MAIN=exo2.Main2
 
 default:classes
 
