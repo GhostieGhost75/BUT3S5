@@ -1,11 +1,15 @@
+package semaphore;
+
 import java.awt.*;
 import java.util.Random;
 import javax.swing.*;
 
 class UneFenetre extends JFrame
 {
-    int qtyMobile = 50;
+    int qtyMobile = 30;
     private final int LARG=400, HAUT=750;
+    private static SemaphoreGeneral semaGen = new SemaphoreGeneral(5); //limité à n threads
+
 
     public UneFenetre() {
 
@@ -17,7 +21,7 @@ class UneFenetre extends JFrame
         Random temps = new Random();
         for (int i = 0; i < qtyMobile; i++) {
             Random rand = new Random();
-            UnMobile mobile = new UnMobile(LARG, HAUT/qtyMobile, temps.nextInt(500)); //enfant de la fenêtre
+            UnMobile mobile = new UnMobile(LARG, HAUT/qtyMobile, temps.nextInt(500), semaGen); //enfant de la fenêtre
             mobiles[i] = mobile;
             leConteneur.add(mobile);
             threads[i] = new Thread(mobile); //runnable dans thread

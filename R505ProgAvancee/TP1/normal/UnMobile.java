@@ -1,5 +1,9 @@
-import java.awt.*;
+package normal;
+
+import semaphore.SemaphoreBinaire;
+
 import javax.swing.*;
+import java.awt.*;
 
 class UnMobile extends JPanel implements Runnable
 {
