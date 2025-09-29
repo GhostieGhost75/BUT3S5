@@ -1,8 +1,4 @@
-import java.io.*;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.BufferedReader;
-import java.lang.String;
+package exo1;
 
 public class Main {
 

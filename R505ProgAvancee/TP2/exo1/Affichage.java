@@ -1,20 +1,13 @@
-/**
- * 
- */
-import java.io.*;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.BufferedReader;
-import java.lang.String;
+package exo1;
 
 class Exclusion{};
 public class Affichage extends Thread{
-	String texte;
+    String texte;
     static final Exclusion exclusionImpression = new Exclusion();
 
-	public Affichage (String txt){texte=txt;}
-	
-	public void run(){
+    public Affichage (String txt){texte=txt;}
+
+    public void run(){
 
         // *
         synchronized (exclusionImpression) { //verrou avec exclusion, possible de verouiller System.out à la place
@@ -25,5 +18,5 @@ public class Affichage extends Thread{
         }
         // section critique
 
-	}
+    }
 }
