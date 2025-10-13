@@ -8,7 +8,7 @@ public class Mailbox { //abstraction boîte aux lettre ==> moniteur
         }
         String tmp = buffer;
         available = true;
-        notifyAll();
+        notify();
         return tmp;
     }
 
@@ -18,6 +18,6 @@ public class Mailbox { //abstraction boîte aux lettre ==> moniteur
         }
         buffer = letter;
         available = false;
-        notifyAll();
+        notify();
     }
 }

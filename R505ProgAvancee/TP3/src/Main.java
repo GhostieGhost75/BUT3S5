@@ -7,6 +7,7 @@ public class Main {
         Consumer cons1 = new Consumer(mb);
         Consumer cons2 = new Consumer(mb);
         Consumer cons3 = new Consumer(mb);
+        prod3.start();
         cons1.start();
         prod1.start();
         cons2.start();
