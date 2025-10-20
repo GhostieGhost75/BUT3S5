@@ -1,3 +1,5 @@
+package exo1;
+
 public class Producer extends Thread {
     private String letter;
     private Mailbox mb;

@@ -1,3 +1,5 @@
+package exo1;
+
 public class Consumer extends Thread {
     private String letter;
     private Mailbox mb;

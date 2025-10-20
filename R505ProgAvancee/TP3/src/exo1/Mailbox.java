@@ -1,3 +1,5 @@
+package exo1;
+
 public class Mailbox { //abstraction boîte aux lettre ==> moniteur
     private String buffer; //abstraction lettre
     public boolean available = true; //0 pas accessible ou 1 accessible
