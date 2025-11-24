@@ -35,7 +35,7 @@ class Master {
 	long startTime = System.currentTimeMillis();
 
 	// Create a collection of tasks
-	List<Callable<Long>> tasks = new ArrayList<Callable<Long>>();
+	List<Callable<Long>> tasks = new ArrayList<Callable<Long>>(); //liste de tâches callable
 	for (int i = 0; i < numWorkers; ++i) 
 	    {
 		tasks.add(new Worker(totalCount));
@@ -51,7 +51,7 @@ class Master {
 	    {
 		// Call to get() is an implicit barrier.  This will block
 		// until result from corresponding worker is ready.
-		total += f.get();
+		total += f.get(); //récupère résultats au fur et à mesure et additionne
 	    }
 	double pi = 4.0 * total / totalCount / numWorkers;
 
@@ -74,7 +74,7 @@ class Master {
 /**
  * Task for running the Monte Carlo simulation.
  */
-class Worker implements Callable<Long> 
+class Worker implements Callable<Long> //classe paramétrée par Long
 {   
     private int numIterations;
     public Worker(int num) 
