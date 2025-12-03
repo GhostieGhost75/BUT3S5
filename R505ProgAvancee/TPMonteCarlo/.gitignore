@@ -1,3 +1,7 @@
+### IntelliJ IDEA ###
 out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+.kotlin
+TPMonteCarlo.iml
 .idea/
-TP4.iml

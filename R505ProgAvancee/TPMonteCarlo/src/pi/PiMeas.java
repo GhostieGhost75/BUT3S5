@@ -7,7 +7,7 @@ public class PiMeas {
     public static void main(String[] args) throws Exception
     {
         long time;
-        int maxproc = 8;
+        int maxproc = 16;
         int nbval = 4032000; //8! *100
         boolean weak = true;
         FileWriter results;
