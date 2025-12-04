@@ -1,0 +1,5 @@
+services:
+  centos:
+    image: centos/systemd
+    volumes:
+        - $HOME/www:/var/www

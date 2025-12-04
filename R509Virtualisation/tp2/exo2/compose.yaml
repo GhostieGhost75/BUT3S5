@@ -1,0 +1,12 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:80"
+    develop:
+      watch:
+        - action: sync
+          path: ./html
+          target: /usr/local/apache2/htdocs
+  redis:
+    image: "redis:alpine"
