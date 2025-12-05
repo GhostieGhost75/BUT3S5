@@ -2,6 +2,8 @@ package distributedMC;
 
 import java.io.*;
 import java.net.*;
+import java.util.Arrays;
+
 /** Master is a client. It makes requests to numWorkers.
  *   
  */
@@ -17,51 +19,51 @@ public class MasterSocket {
     
     public static void main(String[] args) throws Exception {
 
-	// MC parameters
-	int totalCount = 16000000; // total number of throws on a Worker
-	int total = 0; // total number of throws inside quarter of disk
-	double pi; 
+        // MC parameters
+        int totalCount = 16000000; // total number of throws on a Worker
+        int total; // total number of throws inside quarter of disk
+        double pi;
 
-	int numWorkers = maxServer;
-	BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-	String s; // for bufferRead
+        int numWorkers = maxServer;
+        BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+        String s; // for bufferRead
 
-	System.out.println("#########################################");
-	System.out.println("# Computation of PI by MC method        #");
-	System.out.println("#########################################");
-	
-	System.out.println("\n How many workers for computing PI (< maxServer): ");
-	try{
-	    s = bufferRead.readLine(); //saisie clavier
-	    numWorkers = Integer.parseInt(s);
-	    System.out.println(numWorkers);
-	}
-	catch(IOException ioE){
-	   ioE.printStackTrace();
-	}
-	
-	for (int i=0; i<numWorkers; i++){
-	    System.out.println("Enter worker"+ i +" port : ");
-	    try{
-		s = bufferRead.readLine(); //saisie clavier du port
-		System.out.println("You select " + s);
-        tab_port[i]=Integer.parseInt(s);
-	    }
-	    catch(IOException ioE){
-		ioE.printStackTrace();
-	    }
-	}
+        System.out.println("#########################################");
+        System.out.println("# Computation of PI by MC method        #");
+        System.out.println("#########################################");
+
+        System.out.println("\n How many workers for computing PI (< maxServer): ");
+        try{
+            s = bufferRead.readLine(); //saisie clavier
+            numWorkers = Integer.parseInt(s);
+            System.out.println(numWorkers);
+        }
+        catch(IOException ioE){
+           ioE.printStackTrace();
+        }
+
+        for (int i=0; i<numWorkers; i++){
+            System.out.println("Enter worker"+ i +" port : ");
+            try{
+                s = bufferRead.readLine(); //saisie clavier du port
+                System.out.println("You select " + s);
+                tab_port[i]=Integer.parseInt(s);
+            }
+            catch(IOException ioE){
+                ioE.printStackTrace();
+            }
+        }
 
        //create worker's socket
        for(int i = 0 ; i < numWorkers ; i++) {
-	   sockets[i] = new Socket(ip, tab_port[i]); //on donne adresse ip et port au socket pour savoir où il va
-	   System.out.println("SOCKET = " + sockets[i]);
-	   
-	   reader[i] = new BufferedReader( new InputStreamReader(sockets[i].getInputStream()));
-	   writer[i] = new PrintWriter(new BufferedWriter(new OutputStreamWriter(sockets[i].getOutputStream())),true);
-       //pour pouvoir lire msg venant du worker transitant par le socket
-       //en gros il crée en se basant sur socket.getInputStream qui renvoie
-       //socket.getOutputStream() renvoie
+           sockets[i] = new Socket(ip, tab_port[i]); //on donne adresse ip et port au socket pour savoir où il va
+           System.out.println("SOCKET = " + sockets[i]);
+
+           reader[i] = new BufferedReader( new InputStreamReader(sockets[i].getInputStream()));
+           writer[i] = new PrintWriter(new BufferedWriter(new OutputStreamWriter(sockets[i].getOutputStream())),true);
+           //pour pouvoir lire msg venant du worker transitant par le socket
+           //en gros il crée en se basant sur socket.getInputStream qui renvoie
+           //socket.getOutputStream() renvoie
        }
 
        String message_to_send;
@@ -72,47 +74,48 @@ public class MasterSocket {
        long stopTime, startTime;
 
        while (message_repeat.equals("y")){
+           total = 0;
 
-	   startTime = System.currentTimeMillis();
-	   // initialize workers
-	   for(int i = 0 ; i < numWorkers ; i++) {
-	       writer[i].println(message_to_send);          // send a message to each worker
-           //ecrit dans un objet PrintWriter càd dans un OutputStream ==> envoie le msg getOutputStream
-	   }
-	   
-	   //listen to workers's message 
-	   for(int i = 0 ; i < numWorkers ; i++) {
-	       tab_total_workers[i] = reader[i].readLine();      // read message from server
-           //attend qu'on écrive trucs. readline fait du getInputStream
-           //là il veut récup les messages qui sont ncible de chaque worker
-	       System.out.println("Client sent: " + tab_total_workers[i]);
-	   }
-	   
-	   // compute PI with the result of each workers
-	   for(int i = 0 ; i < numWorkers ; i++) {
-	       total += Integer.parseInt(tab_total_workers[i]);
-	   }
-	   pi = 4.0 * total / totalCount / numWorkers;
+           startTime = System.currentTimeMillis();
+           // initialize workers
+           for(int i = 0 ; i < numWorkers ; i++) {
+               writer[i].println(message_to_send);          // send a message to each worker
+               //ecrit dans un objet PrintWriter càd dans un OutputStream ==> envoie le msg getOutputStream
+           }
 
-	   stopTime = System.currentTimeMillis();
+           //listen to workers's message
+           for(int i = 0 ; i < numWorkers ; i++) {
+               tab_total_workers[i] = reader[i].readLine();      // read message from server
+               //attend qu'on écrive trucs. readline fait du getInputStream
+               //là il veut récup les messages qui sont ncible de chaque worker
+               System.out.println("Client sent: " + tab_total_workers[i]);
+           }
 
-	   System.out.println("\nPi : " + pi );
-	   System.out.println("Error: " + (Math.abs((pi - Math.PI)) / Math.PI) +"\n");
-	   
-	   System.out.println("Ntot: " + totalCount*numWorkers);
-	   System.out.println("Available processors: " + numWorkers);
-	   System.out.println("Time Duration (ms): " + (stopTime - startTime) + "\n");
-	   
-	   System.out.println( (Math.abs((pi - Math.PI)) / Math.PI) +" "+ totalCount*numWorkers +" "+ numWorkers +" "+ (stopTime - startTime));
+           // compute PI with the result of each workers
+           for(int i = 0 ; i < numWorkers ; i++) {
+               total += Integer.parseInt(tab_total_workers[i]);
+           }
+           pi = 4.0 * total / totalCount / numWorkers;
 
-	   System.out.println("\n Repeat computation (y/N): ");
-	   try{
-	       message_repeat = bufferRead.readLine();
-	       System.out.println(message_repeat);
-	   }
-	   catch(IOException ioE){
-	       ioE.printStackTrace();
-	   }
+           stopTime = System.currentTimeMillis();
+
+           System.out.println("\nPi : " + pi );
+           System.out.println("Error: " + (Math.abs((pi - Math.PI)) / Math.PI) +"\n");
+
+           System.out.println("Ntot: " + totalCount*numWorkers);
+           System.out.println("Available processors: " + numWorkers);
+           System.out.println("Time Duration (ms): " + (stopTime - startTime) + "\n");
+
+           System.out.println( (Math.abs((pi - Math.PI)) / Math.PI) +" "+ totalCount*numWorkers +" "+ numWorkers +" "+ (stopTime - startTime));
+
+           System.out.println("\n Repeat computation (y/N): ");
+           try{
+               message_repeat = bufferRead.readLine();
+               System.out.println(message_repeat);
+           }
+           catch(IOException ioE){
+               ioE.printStackTrace();
+           }
        }
        
        for(int i = 0 ; i < numWorkers ; i++) {

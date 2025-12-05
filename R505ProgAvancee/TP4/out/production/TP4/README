@@ -11,3 +11,6 @@ java WorkerSocket <port>
 on client terminal (Master):
 make
 make run
+
+PAS OUBLIER DE COMPILER AVANT
+javac .\MasterSocket.java .\WorkerSocker.java
