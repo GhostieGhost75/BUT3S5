@@ -1,0 +1,27 @@
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet : 172.170.0.0/16
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:80"
+    develop:
+      watch:
+        - action: sync
+          path: ./html
+          target: /usr/local/apache2/htdocs
+    networks:
+      default:
+        ipv4_address : 172.170.0.10
+
+  redis:
+    image: "redis:alpine"
+    networks:
+      default:
+        ipv4_address : 172.170.0.11
