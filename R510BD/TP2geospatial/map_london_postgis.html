@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3c296d9eb19ffc6c344d0d1448d40083 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3c296d9eb19ffc6c344d0d1448d40083" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3c296d9eb19ffc6c344d0d1448d40083 = L.map(
+                "map_3c296d9eb19ffc6c344d0d1448d40083",
+                {
+                    center: [51.5074, -0.1278],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ee3ba3560225fce924f715fc281246b1 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ee3ba3560225fce924f715fc281246b1.addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var marker_5d429a9c3432220ed75628c79142a8f6 = L.marker(
+                [51.5007, -0.1246],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_5a297291b02198b2e3c8b545d90e3875 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_5d429a9c3432220ed75628c79142a8f6.bindTooltip(
+                `<div>
+                     Big Ben (Jour 1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5d429a9c3432220ed75628c79142a8f6.setIcon(icon_5a297291b02198b2e3c8b545d90e3875);
+            
+    
+            var marker_dc0525b9c606f1df94c90134bc7c9e66 = L.marker(
+                [51.4993, -0.1273],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_d4e74a78e4c8c5b24b4352c39f59c9a8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_dc0525b9c606f1df94c90134bc7c9e66.bindTooltip(
+                `<div>
+                     Westminster Abbey (Jour 1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dc0525b9c606f1df94c90134bc7c9e66.setIcon(icon_d4e74a78e4c8c5b24b4352c39f59c9a8);
+            
+    
+            var marker_43aa77412feac7db92c3b57556a6d2e1 = L.marker(
+                [51.5034, -0.1276],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_fd961acb99ea275b163a64a6d283fa83 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_43aa77412feac7db92c3b57556a6d2e1.bindTooltip(
+                `<div>
+                     10 Downing Street (Jour 1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_43aa77412feac7db92c3b57556a6d2e1.setIcon(icon_fd961acb99ea275b163a64a6d283fa83);
+            
+    
+            var marker_e5b62e56e91787b13a921d56b84a7708 = L.marker(
+                [51.502, -0.1347],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_6424390b0f3471586618a2caa7bc354a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_e5b62e56e91787b13a921d56b84a7708.bindTooltip(
+                `<div>
+                     St James's Park (Jour 1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e5b62e56e91787b13a921d56b84a7708.setIcon(icon_6424390b0f3471586618a2caa7bc354a);
+            
+    
+            var marker_50cca6a737e864d740e0af7a46e8bf37 = L.marker(
+                [51.5014, -0.1419],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_dff02fe3a7bff3aee3f78cb065f76ff3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_50cca6a737e864d740e0af7a46e8bf37.bindTooltip(
+                `<div>
+                     Buckingham Palace (Jour 1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_50cca6a737e864d740e0af7a46e8bf37.setIcon(icon_dff02fe3a7bff3aee3f78cb065f76ff3);
+            
+    
+            var marker_94434664f5ae0c69f09bb09393b88e5b = L.marker(
+                [51.5115, -0.1234],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_b562fba6e8366eea441958f28d53d258 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_94434664f5ae0c69f09bb09393b88e5b.bindTooltip(
+                `<div>
+                     Covent Garden (Jour 1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_94434664f5ae0c69f09bb09393b88e5b.setIcon(icon_b562fba6e8366eea441958f28d53d258);
+            
+    
+            var marker_bf4f14862feb29ed55a8f048dfb1663e = L.marker(
+                [51.508, -0.1281],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_3623e16d3ee0632b1ced0a62df006a18 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_bf4f14862feb29ed55a8f048dfb1663e.bindTooltip(
+                `<div>
+                     Trafalgar Square (Jour 1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bf4f14862feb29ed55a8f048dfb1663e.setIcon(icon_3623e16d3ee0632b1ced0a62df006a18);
+            
+    
+            var marker_29a3f00f7463bb6f26527a1eb736b2f2 = L.marker(
+                [51.5089, -0.1283],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_cfd2694f32b2e556ebea9424bfc7dc93 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_29a3f00f7463bb6f26527a1eb736b2f2.bindTooltip(
+                `<div>
+                     National Gallery (Jour 1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_29a3f00f7463bb6f26527a1eb736b2f2.setIcon(icon_cfd2694f32b2e556ebea9424bfc7dc93);
+            
+    
+            var marker_9aa2fb5315b9124e1d1af44fb51c16ac = L.marker(
+                [51.5101, -0.134],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_2f20e39bd845e650362d0f4564c538aa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_9aa2fb5315b9124e1d1af44fb51c16ac.bindTooltip(
+                `<div>
+                     Piccadilly Circus (Jour 1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9aa2fb5315b9124e1d1af44fb51c16ac.setIcon(icon_2f20e39bd845e650362d0f4564c538aa);
+            
+    
+            var marker_c3d3d00707c5fcb146a18eb87b1250fd = L.marker(
+                [51.5136, -0.1311],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_bac8b915823ef3686d5781a51a153d78 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_c3d3d00707c5fcb146a18eb87b1250fd.bindTooltip(
+                `<div>
+                     Soho (Jour 1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c3d3d00707c5fcb146a18eb87b1250fd.setIcon(icon_bac8b915823ef3686d5781a51a153d78);
+            
+    
+            var marker_eb28be50836eb799ff47ad18992f2ab5 = L.marker(
+                [51.5129, -0.1291],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_ca81d26dfe4eb6f97937de76adeeed18 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_eb28be50836eb799ff47ad18992f2ab5.bindTooltip(
+                `<div>
+                     Chinatown (Jour 1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_eb28be50836eb799ff47ad18992f2ab5.setIcon(icon_ca81d26dfe4eb6f97937de76adeeed18);
+            
+    
+            var marker_14bb2b6fb05607a431f128c1a031f97c = L.marker(
+                [51.5081, -0.0759],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_de23cf8ab9abae240f7ae2ed1a3c8e4e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_14bb2b6fb05607a431f128c1a031f97c.bindTooltip(
+                `<div>
+                     Tower of London (Jour 2)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_14bb2b6fb05607a431f128c1a031f97c.setIcon(icon_de23cf8ab9abae240f7ae2ed1a3c8e4e);
+            
+    
+            var marker_786be07714c01a002b012f3c13bb72f2 = L.marker(
+                [51.5055, -0.0754],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_1fecaceff68e2937606bccf865c62f70 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_786be07714c01a002b012f3c13bb72f2.bindTooltip(
+                `<div>
+                     Tower Bridge (Jour 2)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_786be07714c01a002b012f3c13bb72f2.setIcon(icon_1fecaceff68e2937606bccf865c62f70);
+            
+    
+            var marker_683eef3bd15dbd385f1fe83e7dd70300 = L.marker(
+                [51.5054, -0.0911],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_cfa99ce3d8a67c1be5b751cc2dfd4970 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_683eef3bd15dbd385f1fe83e7dd70300.bindTooltip(
+                `<div>
+                     Borough Market (Jour 2)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_683eef3bd15dbd385f1fe83e7dd70300.setIcon(icon_cfa99ce3d8a67c1be5b751cc2dfd4970);
+            
+    
+            var marker_bcaa50f656110a1ef10f6553bfb8098b = L.marker(
+                [51.5138, -0.0984],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_0bded816dcbd714d23d25497762bc7bb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_bcaa50f656110a1ef10f6553bfb8098b.bindTooltip(
+                `<div>
+                     St. Paul's Cathedral (Jour 2)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bcaa50f656110a1ef10f6553bfb8098b.setIcon(icon_0bded816dcbd714d23d25497762bc7bb);
+            
+    
+            var marker_2c0c9def26c62aedc66ccc1e6874c22e = L.marker(
+                [51.5107, -0.0984],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_d6a80a393d0e05ad90b344300765f673 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_2c0c9def26c62aedc66ccc1e6874c22e.bindTooltip(
+                `<div>
+                     Millennium Bridge (Jour 2)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2c0c9def26c62aedc66ccc1e6874c22e.setIcon(icon_d6a80a393d0e05ad90b344300765f673);
+            
+    
+            var marker_ed6972863f5ffb5e56a7a4f9e2e234e8 = L.marker(
+                [51.5076, -0.0994],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_d1171eebb1160b46273d10ba44a1f345 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_ed6972863f5ffb5e56a7a4f9e2e234e8.bindTooltip(
+                `<div>
+                     Tate Modern (Jour 2)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ed6972863f5ffb5e56a7a4f9e2e234e8.setIcon(icon_d1171eebb1160b46273d10ba44a1f345);
+            
+    
+            var marker_0cdcc729b95e6380e46465ebdd972237 = L.marker(
+                [51.5115, -0.0836],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_c089d5aca119f138a0956b55ac68631a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_0cdcc729b95e6380e46465ebdd972237.bindTooltip(
+                `<div>
+                     Sky Garden (Jour 2)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0cdcc729b95e6380e46465ebdd972237.setIcon(icon_c089d5aca119f138a0956b55ac68631a);
+            
+    
+            var marker_8338a4f90506935db06b8217d9d923f3 = L.marker(
+                [51.5045, -0.0865],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_231ca2af717ea70119cfb4c2961db1d7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_8338a4f90506935db06b8217d9d923f3.bindTooltip(
+                `<div>
+                     The Shard (Jour 2)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8338a4f90506935db06b8217d9d923f3.setIcon(icon_231ca2af717ea70119cfb4c2961db1d7);
+            
+    
+            var marker_ecb876aeda59858147ece2ad238a18b8 = L.marker(
+                [51.5079, -0.0877],
+                {
+}
+            ).addTo(map_3c296d9eb19ffc6c344d0d1448d40083);
+        
+    
+            var icon_2f1dd57e957f1cdbbace259cb69c02b3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_ecb876aeda59858147ece2ad238a18b8.bindTooltip(
+                `<div>
+                     London Bridge (Jour 2)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ecb876aeda59858147ece2ad238a18b8.setIcon(icon_2f1dd57e957f1cdbbace259cb69c02b3);
+            
+</script>
+</html>
