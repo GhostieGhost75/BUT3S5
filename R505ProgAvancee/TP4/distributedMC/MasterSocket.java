@@ -11,48 +11,62 @@ public class MasterSocket {
     static int maxServer = 8;
     static final int[] tab_port = {25545,25546,25547,25548,25549,25550,25551,25552}; //liste ports libres
     static String[] tab_total_workers = new String[maxServer];
-    static final String ip = "127.0.0.1"; //localhost
+    static String ip = "127.0.0.1"; //localhost
     static BufferedReader[] reader = new BufferedReader[maxServer];
     static PrintWriter[] writer = new PrintWriter[maxServer];
     static Socket[] sockets = new Socket[maxServer];
     
     
     public static void main(String[] args) throws Exception {
-
-        // MC parameters
+        //DEBUG
+        int debug = -1;
+        boolean weak = false;
         int totalCount = 16000000; // total number of throws on a Worker
+        FileWriter results = null;
+        if (args.length > 0) {
+            try {
+                if (args[0].equals("debug")) debug = 10;
+                maxServer = Math.min(Integer.parseInt(args[1]),  maxServer);
+                try{if (args[2].equals("weak")) weak = true;} catch(Exception e){}
+                results = new FileWriter("socket_"+totalCount+"x"+maxServer+(weak ? "_weak" : "_strong")+".txt",false);
+            } catch (Exception e) {}
+        }
+
+        System.out.println(debug);
+        // MC parameters
         int total; // total number of throws inside quarter of disk
         double pi;
 
         int numWorkers = maxServer;
         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-        String s; // for bufferRead
+        //tout ça est automatisé si en mode debug
+        if (debug == -1) {
+            String s; // for bufferRead
+            System.out.println("#########################################");
+            System.out.println("# Computation of PI by MC method        #");
+            System.out.println("#########################################");
 
-        System.out.println("#########################################");
-        System.out.println("# Computation of PI by MC method        #");
-        System.out.println("#########################################");
-
-        System.out.println("\n How many workers for computing PI (< maxServer): ");
-        try{
-            s = bufferRead.readLine(); //saisie clavier
-            numWorkers = Integer.parseInt(s);
-            System.out.println(numWorkers);
-        }
-        catch(IOException ioE){
-           ioE.printStackTrace();
-        }
-
-        for (int i=0; i<numWorkers; i++){
-            System.out.println("Enter worker"+ i +" port : ");
+            System.out.println("\n How many workers for computing PI (< maxServer): ");
             try{
-                s = bufferRead.readLine(); //saisie clavier du port
-                System.out.println("You select " + s);
-                tab_port[i]=Integer.parseInt(s);
+                s = bufferRead.readLine(); //saisie clavier
+                numWorkers = Integer.parseInt(s);
             }
             catch(IOException ioE){
                 ioE.printStackTrace();
             }
+            for (int i=0; i<numWorkers; i++){
+                System.out.println("Enter worker"+ i +" port : ");
+                try{
+                    s = bufferRead.readLine(); //saisie clavier du port
+                    System.out.println("You select " + s);
+                    tab_port[i]=Integer.parseInt(s);
+                }
+                catch(IOException ioE){
+                    ioE.printStackTrace();
+                }
+            }
         }
+        System.out.println(numWorkers);
 
        //create worker's socket
        for(int i = 0 ; i < numWorkers ; i++) {
@@ -99,31 +113,40 @@ public class MasterSocket {
 
            stopTime = System.currentTimeMillis();
 
-           System.out.println("\nPi : " + pi );
-           System.out.println("Error: " + (Math.abs((pi - Math.PI)) / Math.PI) +"\n");
+           if (debug == -1) {
+               System.out.println("\nPi : " + pi );
+               System.out.println("Error: " + (Math.abs((pi - Math.PI)) / Math.PI) +"\n");
 
-           System.out.println("Ntot: " + totalCount*numWorkers);
-           System.out.println("Available processors: " + numWorkers);
-           System.out.println("Time Duration (ms): " + (stopTime - startTime) + "\n");
+               System.out.println("Ntot: " + totalCount*numWorkers);
+               System.out.println("Available processors: " + numWorkers);
+               System.out.println("Time Duration (ms): " + (stopTime - startTime) + "\n");
 
-           System.out.println( (Math.abs((pi - Math.PI)) / Math.PI) +" "+ totalCount*numWorkers +" "+ numWorkers +" "+ (stopTime - startTime));
+               System.out.println( (Math.abs((pi - Math.PI)) / Math.PI) +" "+ totalCount*numWorkers +" "+ numWorkers +" "+ (stopTime - startTime));
 
-           System.out.println("\n Repeat computation (y/N): ");
-           try{
-               message_repeat = bufferRead.readLine();
-               System.out.println(message_repeat);
-           }
-           catch(IOException ioE){
-               ioE.printStackTrace();
+               System.out.println("\n Repeat computation (y/N): ");
+               try{
+                   message_repeat = bufferRead.readLine();
+                   System.out.println(message_repeat);
+               }
+               catch(IOException ioE){
+                   ioE.printStackTrace();
+               }
+           } else {
+               results.write(numWorkers+" "+ totalCount*numWorkers+" "+(stopTime-startTime)+" "+pi+"\n");
+               results.flush();
+               if (debug == 0) message_repeat = "n";
+               else  {
+                   message_repeat = "y";
+                   debug--;
+               }
            }
        }
-       
        for(int i = 0 ; i < numWorkers ; i++) {
-	   System.out.println("END");     // Send ending message
-	   writer[i].println("END") ;
-	   reader[i].close();
-	   writer[i].close();
-	   sockets[i].close();
+           System.out.println("END");     // Send ending message
+           writer[i].println("END") ;
+           reader[i].close();
+           writer[i].close();
+           sockets[i].close();
        }
    }
 }
