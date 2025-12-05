@@ -2,7 +2,6 @@ package distributedMC;
 
 import java.io.*;
 import java.net.*;
-import java.util.Arrays;
 
 /** Master is a client. It makes requests to numWorkers.
  *   
@@ -15,20 +14,22 @@ public class MasterSocket {
     static BufferedReader[] reader = new BufferedReader[maxServer];
     static PrintWriter[] writer = new PrintWriter[maxServer];
     static Socket[] sockets = new Socket[maxServer];
-    
-    
+
     public static void main(String[] args) throws Exception {
         //DEBUG
         int debug = -1;
+        boolean multipleIPs = false;
         boolean weak = false;
         int totalCount = 16000000; // total number of throws on a Worker
         FileWriter results = null;
         if (args.length > 0) {
             try {
-                if (args[0].equals("debug")) debug = 10;
-                maxServer = Math.min(Integer.parseInt(args[1]),  maxServer);
-                try{if (args[2].equals("weak")) weak = true;} catch(Exception e){}
-                results = new FileWriter("socket_"+totalCount+"x"+maxServer+(weak ? "_weak" : "_strong")+".txt",false);
+                if (args[0].equals("debug")) {
+                    debug = 10;
+                    maxServer = Math.min(Integer.parseInt(args[1]),  maxServer);
+                    try{if (args[2].equals("weak")) weak = true;} catch(Exception e){}
+                    results = new FileWriter("socket_"+totalCount+"x"+maxServer+(weak ? "_weak" : "_strong")+".txt",false);
+                } else if (args[0].equals("multipleIPs")) multipleIPs = true;
             } catch (Exception e) {}
         }
 
@@ -67,6 +68,7 @@ public class MasterSocket {
             }
         }
         System.out.println(numWorkers);
+        //LinkedList<Pair<String, Integer>>
 
        //create worker's socket
        for(int i = 0 ; i < numWorkers ; i++) {
