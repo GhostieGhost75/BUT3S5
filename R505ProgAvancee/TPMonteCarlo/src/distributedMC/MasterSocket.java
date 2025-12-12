@@ -7,10 +7,10 @@ import java.net.*;
  *   
  */
 public class MasterSocket {
-    static int maxServer = 8;
-    static final int[] tab_port = {25545,25546,25547,25548,25549,25550,25551,25552}; //liste ports libres
+    static int maxServer = 16;
+    static final int[] tab_port = {25545,25546,25547,25548,25549,25550,25551,25552, 25553, 25554, 25555, 25556, 25557, 25558, 25559, 25560}; //liste ports libres
     static String[] tab_total_workers = new String[maxServer];
-    static String ip = "127.0.0.1"; //localhost
+    static String ip = "192.168.24.220"; //localhost
     static BufferedReader[] reader = new BufferedReader[maxServer];
     static PrintWriter[] writer = new PrintWriter[maxServer];
     static Socket[] sockets = new Socket[maxServer];
@@ -123,8 +123,6 @@ public class MasterSocket {
                System.out.println("Available processors: " + numWorkers);
                System.out.println("Time Duration (ms): " + (stopTime - startTime) + "\n");
 
-               System.out.println( (Math.abs((pi - Math.PI)) / Math.PI) +" "+ totalCount*numWorkers +" "+ numWorkers +" "+ (stopTime - startTime));
-
                System.out.println("\n Repeat computation (y/N): ");
                try{
                    message_repeat = bufferRead.readLine();
@@ -136,6 +134,7 @@ public class MasterSocket {
            } else {
                results.write(numWorkers+" "+ totalCount*numWorkers+" "+(stopTime-startTime)+" "+pi+"\n");
                results.flush();
+               System.out.println( (Math.abs((pi - Math.PI)) / Math.PI) +" "+ totalCount*numWorkers +" "+ numWorkers +" "+ (stopTime - startTime));
                if (debug == 0) message_repeat = "n";
                else  {
                    message_repeat = "y";
