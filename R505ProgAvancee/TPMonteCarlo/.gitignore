@@ -5,3 +5,4 @@ out/
 .kotlin
 TPMonteCarlo.iml
 .idea/
+src/*/*.class
