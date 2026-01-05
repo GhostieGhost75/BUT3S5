@@ -52,7 +52,7 @@ public class WorkerSocket {
                 // compute
                 //System.out.println("TODO : compute Monte Carlo and send total");
                 Master master = new Master();
-                long ncible =ncible = master.doRun(ntot/cores, cores);
+                long ncible = master.doRun(ntot/cores, cores);
                 str = String.valueOf(ncible);
                 pWrite.println(str);         // send number of points in quarter of disk
             }else{

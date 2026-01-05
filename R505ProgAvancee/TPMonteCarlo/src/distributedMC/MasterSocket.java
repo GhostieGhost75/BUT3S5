@@ -9,6 +9,7 @@ import java.net.*;
 public class MasterSocket {
     static int maxServer = 16;
     static final int[] tab_port = {25545,25546,25547,25548,25549,25550,25551,25552, 25553, 25554, 25555, 25556, 25557, 25558, 25559, 25560}; //liste ports libres
+    static int[] tab_cores = {6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6};
     static String[] tab_total_workers = new String[maxServer];
     static String ip = "192.168.24.220"; //localhost
     static BufferedReader[] reader = new BufferedReader[maxServer];
@@ -27,8 +28,11 @@ public class MasterSocket {
                 if (args[0].equals("debug")) {
                     debug = 10;
                     maxServer = Math.min(Integer.parseInt(args[1]),  maxServer);
-                    try{if (args[2].equals("weak")) weak = true;} catch(Exception e){}
-                    results = new FileWriter("socket_"+totalCount+"x"+maxServer+(weak ? "_weak" : "_strong")+".txt",false);
+                    for (int i=0; i<maxServer; i++) {
+                        tab_cores[i] = Integer.parseInt(args[2]);
+                    }
+                    try{if (args[3].equals("weak")) weak = true;} catch(Exception e){}
+                    results = new FileWriter("socket_"+totalCount+"x"+maxServer+"_"+tab_cores[0]+"cores"+(weak ? "_weak" : "_strong")+".txt",false);
                 } else if (args[0].equals("multipleIPs")) multipleIPs = true;
             } catch (Exception e) {}
         }
@@ -70,16 +74,16 @@ public class MasterSocket {
         System.out.println(numWorkers);
         //LinkedList<Pair<String, Integer>>
 
-       //create worker's socket
+       //create worker's socket_16000000x1_weak.txt
        for(int i = 0 ; i < numWorkers ; i++) {
-           sockets[i] = new Socket(ip, tab_port[i]); //on donne adresse ip et port au socket pour savoir où il va
+           sockets[i] = new Socket(ip, tab_port[i]); //on donne adresse ip et port au socket_16000000x1_weak.txt pour savoir où il va
            System.out.println("SOCKET = " + sockets[i]);
 
            reader[i] = new BufferedReader( new InputStreamReader(sockets[i].getInputStream()));
            writer[i] = new PrintWriter(new BufferedWriter(new OutputStreamWriter(sockets[i].getOutputStream())),true);
-           //pour pouvoir lire msg venant du worker transitant par le socket
-           //en gros il crée en se basant sur socket.getInputStream qui renvoie
-           //socket.getOutputStream() renvoie
+           //pour pouvoir lire msg venant du worker transitant par le socket_16000000x1_weak.txt
+           //en gros il crée en se basant sur socket_16000000x1_weak.txt.getInputStream qui renvoie
+           //socket_16000000x1_weak.txt.getOutputStream() renvoie
        }
 
        String message_to_send;
@@ -90,12 +94,13 @@ public class MasterSocket {
        long stopTime, startTime;
 
        while (message_repeat.equals("y")){
+           if (!weak) {}
            total = 0;
 
            startTime = System.currentTimeMillis();
            // initialize workers
            for(int i = 0 ; i < numWorkers ; i++) {
-               writer[i].println(message_to_send);          // send a message to each worker
+               writer[i].println(message_to_send+' '+String.valueOf(tab_cores[i]));          // send a message to each worker
                //ecrit dans un objet PrintWriter càd dans un OutputStream ==> envoie le msg getOutputStream
            }
 
@@ -132,13 +137,13 @@ public class MasterSocket {
                    ioE.printStackTrace();
                }
            } else {
-               results.write(numWorkers+" "+ totalCount*numWorkers+" "+(stopTime-startTime)+" "+pi+"\n");
+               results.write(tab_cores[0]*numWorkers+" "+ totalCount*numWorkers+" "+(stopTime-startTime)+" "+pi+"\n");
                results.flush();
                System.out.println( (Math.abs((pi - Math.PI)) / Math.PI) +" "+ totalCount*numWorkers +" "+ numWorkers +" "+ (stopTime - startTime));
+               debug--;
                if (debug == 0) message_repeat = "n";
                else  {
                    message_repeat = "y";
-                   debug--;
                }
            }
        }
