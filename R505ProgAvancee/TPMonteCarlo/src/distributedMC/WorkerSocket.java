@@ -14,7 +14,7 @@ import pi.Pi;
 public class WorkerSocket {
     static int port = 25545; //default port
     private static boolean isRunning = true;
-    static int cores = 6;
+    static int cores = 12;
     
     /**
      * compute PI locally by MC and sends the number of points 

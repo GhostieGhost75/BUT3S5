@@ -36,6 +36,9 @@ public class MasterSocket {
                 } else if (args[0].equals("multipleIPs")) multipleIPs = true;
             } catch (Exception e) {}
         }
+        if (weak) {
+            totalCount *= tab_cores[0];
+        }
 
         System.out.println(debug);
         // MC parameters
@@ -74,16 +77,16 @@ public class MasterSocket {
         System.out.println(numWorkers);
         //LinkedList<Pair<String, Integer>>
 
-       //create worker's socket_16000000x1_weak.txt
+       //create worker's socket
        for(int i = 0 ; i < numWorkers ; i++) {
-           sockets[i] = new Socket(ip, tab_port[i]); //on donne adresse ip et port au socket_16000000x1_weak.txt pour savoir où il va
+           sockets[i] = new Socket(ip, tab_port[i]); //on donne adresse ip et port au socket pour savoir où il va
            System.out.println("SOCKET = " + sockets[i]);
 
            reader[i] = new BufferedReader( new InputStreamReader(sockets[i].getInputStream()));
            writer[i] = new PrintWriter(new BufferedWriter(new OutputStreamWriter(sockets[i].getOutputStream())),true);
-           //pour pouvoir lire msg venant du worker transitant par le socket_16000000x1_weak.txt
-           //en gros il crée en se basant sur socket_16000000x1_weak.txt.getInputStream qui renvoie
-           //socket_16000000x1_weak.txt.getOutputStream() renvoie
+           //pour pouvoir lire msg venant du worker transitant par le socket
+           //en gros il crée en se basant sur socket.getInputStream qui renvoie
+           //socket.getOutputStream() renvoie
        }
 
        String message_to_send;
@@ -94,7 +97,6 @@ public class MasterSocket {
        long stopTime, startTime;
 
        while (message_repeat.equals("y")){
-           if (!weak) {}
            total = 0;
 
            startTime = System.currentTimeMillis();
