@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- saved from url=(0089)https://ecampus.paris-saclay.fr/pluginfile.php/4572237/mod_resource/content/1/ex1td1.html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Données industrielles – Électronique</title>
+    <script>
+        function changecss() {
+            let sect = document.getElementsByTagName('section')[0]
+            if (sect.id === "intro") sect.id = "intro2"
+            else sect.id = "intro"
+        }
+    </script>
+</head>
+<body>
+<header>
+    <h1>Analyse de données industrielles dans l'électronique</h1>
+
+</header>
+<nav>
+    <ul>
+        <li><a href="https://ecampus.paris-saclay.fr/pluginfile.php/4572237/mod_resource/content/1/ex1td1.html#formulaire">Sélection</a></li>
+        <li><a href="https://ecampus.paris-saclay.fr/pluginfile.php/4572237/mod_resource/content/1/ex1td1.html#tableau">Tableau des données</a></li>
+    </ul>
+</nav>
+<main>
+    <section id="intro">
+        <h2>Contexte</h2>
+        <p>
+            Le secteur de l’électronique génère un grand volume de données industrielles,
+            notamment liées aux chaînes de production, au contrôle qualité et aux tests de composants.
+            Le formulaire ci-dessous permet de sélectionner un type de mesure à analyser.
+        </p>
+    </section>
+    <section id="formulaire">
+        <h2>Choix du type de données</h2>
+        <form>
+            <fieldset>
+                <legend>Type de mesure</legend>
+                <label>
+                    <input type="radio" name="mesure" value="tension">
+                    Tension (V)
+                </label>
+                <label>
+                    <input type="radio" name="mesure" value="courant">
+                    Courant (A)
+                </label>
+                <label>
+                    <input type="radio" name="mesure" value="temperature">
+                    Température (°C)
+                </label>
+            </fieldset>
+            <button type="submit">Valider</button>
+        </form>
+    </section>
+    <section id="tableau">
+        <h2>Exemple de données relevées</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID Composant</th>
+                <th>Tension (V)</th>
+                <th>Courant (A)</th>
+                <th>Température (°C)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>CP-001</td>
+                <td>3.3</td>
+                <td>0.12</td>
+                <td>42</td>
+            </tr>
+            <tr>
+                <td>CP-002</td>
+                <td>5.0</td>
+                <td>0.20</td>
+                <td>45</td>
+            </tr>
+            <tr>
+                <td>CP-003</td>
+                <td>1.8</td>
+                <td>0.05</td>
+                <td>38</td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="button" onclick="changecss()" value="Changer le CSS">
+    </section>
+</main>
+<footer>
+    <p>© 2025 Données Industrielles – Secteur Électronique</p>
+</footer>
+
+
+</body></html>
