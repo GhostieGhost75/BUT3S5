@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ex5 - TD1</title>
+    <script>
+        function init() {
+            let div = document.getElementById('ec5tp1');
+            let p = document.createElement('p');
+            let a = document.createElement('a');
+            let strong1 = document.createElement('strong');
+            let strong2 = document.createElement('strong');
+            let abbr1 = document.createElement('abbr');
+            let abbr2 = document.createElement('abbr');
+
+            let t0 = document.createTextNode('Le ');
+            let t1 = document.createTextNode('World Wide Web Consortium ');
+            let t2 = document.createTextNode('(W3C)');
+            let t3 = document.createTextNode(' est un organisme de standardisation des technologies du World Wide Web ');
+            let t4 = document.createTextNode('(www)');
+            let t5 = document.createTextNode(' ou plus simplement du ');
+            let t6 = document.createTextNode('web');
+            let t7 = document.createTextNode('Voir le site du Consortium');
+
+            a.href = 'https://www.w3c.org';
+            a.appendChild(t7);
+
+            abbr1.appendChild(t2);
+            abbr2.appendChild(t4);
+
+            strong1.appendChild(t1);
+            strong2.appendChild(t6);
+
+            p.appendChild(t0);
+            p.appendChild(strong1);
+            p.appendChild(abbr1);
+            p.appendChild(t3);
+            p.appendChild(abbr2);
+            p.appendChild(t5);
+            p.appendChild(strong2);
+
+            div.appendChild(p);
+            div.appendChild(a);
+        }
+
+        window.onload = init;
+    </script>
+</head>
+<body>
+<h1>Exercice 5 - TP1</h1>
+<div id="ec5tp1"></div>
+</body>
+</html>

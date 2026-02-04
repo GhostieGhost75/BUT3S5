@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exo 7</title>
+    <script>
+        function calculer() {
+            let resultat = document.getElementById('res');
+            resultat.innerHTML = null;
+            let a = document.getElementById('a').value;
+            let p = document.createElement('p');
+            if (a==0) {
+                let textnull = "Le coefficient du trinome a est nul; ce n'est pas un trinôme";
+                p.appendChild(document.createTextNode(textnull));
+            } else {
+                let b = document.getElementById('b').value;
+                let c = document.getElementById('c').value;
+
+                let delta = b**2 - 4*a*c
+                let t0 = "Le trinôme n'a pas de racine réelle";
+                let t1 = "Le trinôme possède une racine double";
+                let t2 = "Le trinôme possède deux racines";
+                let txt;
+                let x1, x2;
+                if (delta > 0) {
+                    x1 = Number.parseFloat((-b-Math.sqrt(delta))/(2*a)).toFixed(4);
+                    x2 = Number.parseFloat((-b+Math.sqrt(delta))/(2*a)).toFixed(4);
+                    txt = document.createTextNode(`${t2}`+' '+`${x1}`+ ' et '+`${x2}`);
+                } else if (delta == 0) {
+                    x1 = Number.parseFloat(b/(2*a)).toFixed(4);
+                    txt = document.createTextNode(`${t1}`+' : '+`${x1}`);
+                } else {
+                    txt = document.createTextNode('turbo flemme');
+                }
+                p.appendChild(txt);
+            }
+
+
+            resultat.appendChild(p);
+        }
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+<h1>Résolution des équations de degré 2</h1>
+<p>L'équation à résoudre est : \(ax^2+bx+c=0\)</p>
+<div id="form">
+    <label for="a">a</label>
+    <input type="number" id="a" name="a" step="any">
+    <br>
+    <label for="b">b</label>
+    <input type="number" id="b" name="b" step="any">
+    <br>
+    <label for="c">c</label>
+    <input type="number" id="c" name="c" step="any">
+    <br>
+    <br>
+    <input type="button" value="calc" onclick="calculer()">
+    <div id="res"></div>
+</div>
+</body>
+</html>

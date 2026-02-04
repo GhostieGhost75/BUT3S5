@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exo 8</title>
+    <script>
+        vals = localStorage;
+        function afficher() {
+            const div = document.getElementById("out");
+            div.innerHTML = null;
+            if (localStorage.length == 0) {
+                let p = document.createElement("p");
+                p.textContent = "pas de données";
+                div.appendChild(p);
+                return;
+            }
+            const table = document.createElement("table");
+            const thead = document.createElement("thead");
+            const tbody = document.createElement("tbody");
+            tbody.id = "vals"
+            const tr1 = document.createElement("tr");
+            const th1 = document.createElement("th");
+            th1.textContent = "Produit"
+            const th2 = document.createElement("th");
+            th2.textContent = "Quantité"
+            tr1.appendChild(th1)
+            tr1.appendChild(th2)
+            thead.appendChild(tr1);
+            table.appendChild(thead);
+            table.appendChild(tbody)
+            div.appendChild(table);
+            refreshtable();
+        }
+
+        function refreshtable() {
+            let tbody = document.getElementById("vals");
+            tbody.innerHTML = "";
+            for (i=0; i<vals.length; i++) {
+                let tr = document.createElement("tr");
+                const td1 = document.createElement("td");
+                const td2 = document.createElement("td");
+                td1.textContent = vals.key(i);
+                td2.textContent = vals.getItem(vals.key(i));
+                tr.append(td1, td2);
+                tbody.appendChild(tr);
+            }
+
+        }
+
+        function addItem() {
+            let prod = document.getElementById("prod").value;
+            let quant = document.getElementById("quant").value;
+            if (prod != null && quant !== 0) {
+                localStorage.setItem(prod, quant);
+            }
+            afficher();
+        }
+
+        window.onload = afficher;
+
+        function resetStorage() {
+            vals.clear();
+            afficher();
+        }
+    </script>
+</head>
+<body>
+<div id="form">
+    <label for="prod">Produit</label><br>
+    <input type="text" id="prod" name="prod">
+    <br>
+    <label for="quant">Quantité</label><br>
+    <input type="number" id="quant" name="quant" step="any">
+    <br>
+    <input type="button" value="Envoyer" onclick="addItem()">
+    <input type="reset" value="Reset" onclick="resetStorage()">
+    <div id="res"></div>
+</div>
+<div id="out"></div>
+</body>
+</html>

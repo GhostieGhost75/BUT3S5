@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ex6 - TD1</title>
+    <script>
+        function init() {
+            let div = document.getElementById('ex6tp1');
+            let p = document.createElement('p');
+            let ul = document.createElement('ul');
+            let li1 = document.createElement('li');
+            let li2 = document.createElement('li');
+            let li3 = document.createElement('li');
+            let li4 = document.createElement('li');
+            let strong = document.createElement('strong');
+
+            strong.appendChild(document.createTextNode('ECMASCript'));
+            li1.appendChild(document.createTextNode('Javascript'));
+            li2.appendChild(document.createTextNode('ActionScript'));
+            li3.appendChild(document.createTextNode('Jscript'));
+            li4.appendChild(document.createTextNode('EX4'));
+            p.appendChild(document.createTextNode('Langages basés sur '));
+            p.appendChild(strong);
+
+            ul.append(li1, li2, li3, li4);
+            div.appendChild(p);
+            div.appendChild(ul);
+        }
+    </script>
+</head>
+<body>
+<h1>Exercice 6- TP1</h1>
+<div id="ex6tp1">
+    <p>Langages basés sur <strong>ECMASCript</strong></p>
+    <ul>
+        <li>Javascript</li>
+        <li>ActionScript</li>
+        <li>Jscript</li>
+        <li>EX4</li>
+    </ul>
+</div>
+</body>
+</html>
