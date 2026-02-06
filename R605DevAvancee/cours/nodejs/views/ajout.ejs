@@ -1,0 +1,13 @@
+<%- include('fragments/head.ejs')%>
+</head>
+<body>
+<%- include('fragments/navigation.ejs')%>
+<main>
+    <h1>Ajout d'un produit</h1>
+    <form method="POST" action="/admin/ajout">
+        <label for="produit">Produit</label>
+        <input type="text" name="produit" id="produit">
+        <button type="submit">Ajouter</button>
+    </form>
+</main>
+<%- include('fragments/foot.ejs')%>

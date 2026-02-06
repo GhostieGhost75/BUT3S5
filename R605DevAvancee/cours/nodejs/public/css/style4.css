@@ -1,0 +1,52 @@
+body {
+    background-color: #842593;
+}
+
+p, h1, h2, li, a, label{
+    color: #FFFF57;
+}
+
+a:visited {
+    color: #FFFFA0;
+}
+
+nav {
+    background-color: #395248;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+}
+
+nav > ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: bold;
+}
+
+form {
+    width: 40%;
+    background-color: #395248;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form > input[type=text] {
+    width:50%;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+form > button {
+    width: 30%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
