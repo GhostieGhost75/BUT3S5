@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Portée des variables</title>
+  <script>
+    function ecrire(){
+      let variable="Hello everybody !";
+      document.getElementById("deux").textContent=variable;
+    }
+  </script>
+</head>
+<body>
+<h1>Portée des variables</h1>
+<h2>Premier exemple</h2>
+<p id="un"></p>
+<script>
+  let p=document.getElementById("un");
+  let texte="Bonjour tout le monde !";
+  p.textContent=texte;
+  console.log(texte);
+</script>
+<h2>Deuxième exemple</h2>
+<p id="deux"></p>
+<script>
+  ecrire();
+  console.log(variable);
+</script>
+<h2>Objet</h2>
+<script>
+  const compétence = {
+    ue1: "Anglais",
+    ue2: "Mathématiques",
+    ue3: {
+      ue31: "Programmation",
+      ue32: "Algorithmique",
+      ue33: "UML"
+    }
+  };
+  console.log(compétence.ue1);
+  console.log(compétence.ue2);
+  console.log(compétence.ue3.ue31);
+  console.log(compétence.ue3.ue32);
+  console.log(compétence.ue3.ue33);
+  compétence.ue3.ue33="MCD";
+  console.log(compétence.ue3.ue33);
+</script>
+</body>
+</html>
