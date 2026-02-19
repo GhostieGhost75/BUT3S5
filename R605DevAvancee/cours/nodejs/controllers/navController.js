@@ -20,3 +20,15 @@ exports.getBoutique = (req,res,next) => {
     const produits = Produit.fetchAll();
     res.render('boutique',{ pageTitle:"Boutique",listeProduits: produits });
 }
+
+exports.getLogin = (req,res,next) => {
+    console.log('middleware login', req.method);
+    const produits = Produit.fetchAll();
+    res.render('boutique',{ pageTitle:"Boutique",listeProduits: produits });
+}
+
+exports.postLogin = (req,res,next) => {
+    console.log('middleware login', req.method);
+    const produits = Produit.fetchAll();
+    res.render('boutique',{ pageTitle:"Boutique",listeProduits: produits });
+}
